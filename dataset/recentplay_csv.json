@@ -20,10 +20,6 @@
 		},
 		"schema": [
 			{
-				"name": "Prop_0",
-				"type": "String"
-			},
-			{
 				"name": "song_name",
 				"type": "String"
 			},
