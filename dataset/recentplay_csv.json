@@ -1,0 +1,40 @@
+{
+	"name": "recentplay_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blob_linkedservice_spotifypowerbi",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "recentplay_24Mar2021,1139.csv",
+				"container": "recentplay"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Prop_0",
+				"type": "String"
+			},
+			{
+				"name": "song_name",
+				"type": "String"
+			},
+			{
+				"name": "artist_name",
+				"type": "String"
+			},
+			{
+				"name": "played_at",
+				"type": "String"
+			}
+		]
+	}
+}
