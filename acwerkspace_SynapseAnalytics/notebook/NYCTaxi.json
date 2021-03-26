@@ -68,9 +68,9 @@
 					"data = NycTlcYellow()\r\n",
 					"df = data.to_spark_dataframe()\r\n",
 					"# Display 10 rows\r\n",
-					"display(df.limit(10))"
+					"# display(df.limit(10))"
 				],
-				"execution_count": 4
+				"execution_count": 2
 			},
 			{
 				"cell_type": "code",
@@ -123,7 +123,7 @@
 					"display(df)\r\n",
 					"df.write.saveAsTable(\"nyctaxi.passengercountstats\")"
 				],
-				"execution_count": null
+				"execution_count": 3
 			}
 		]
 	}
