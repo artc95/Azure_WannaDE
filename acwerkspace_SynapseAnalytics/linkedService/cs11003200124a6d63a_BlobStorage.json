@@ -6,7 +6,7 @@
 		"type": "AzureBlobStorage",
 		"typeProperties": {
 			"connectionString": "DefaultEndpointsProtocol=https;AccountName=cs11003200124a6d63a;EndpointSuffix=core.windows.net;",
-			"encryptedCredential": " "
+			"encryptedCredential": " " #redacted
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
