@@ -20,3 +20,5 @@ Creating Synapse Workspace, Analyze data using Spark and SQL pools, Visualize us
 https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-create-workspace
 
 Query csv files https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/query-single-csv-file
+
+PySpark DataFrames <> Pandas DataFrames https://docs.databricks.com/spark/latest/spark-sql/spark-pandas.html
