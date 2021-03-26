@@ -22,291 +22,7 @@
 		"metadata": {
 			"saveOutput": true,
 			"synapse_widget": {
-				"version": "0.1",
-				"state": {
-					"a7a8c546-2d97-4cec-9b4a-28c7e9e062ff": {
-						"type": "Synapse.DataFrame",
-						"sync_state": {
-							"table": {
-								"rows": [
-									{
-										"startLon": -73.99280548095703,
-										"startLat": 40.72822189331055,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:50:36.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:07:08.000Z",
-										"paymentType": "1",
-										"tripDistance": 4.9,
-										"vendorID": "1",
-										"endLon": -73.94585418701172,
-										"totalAmount": 19.8,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.77328872680664,
-										"fareAmount": 17.5,
-										"tipAmount": 1,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -73.87300872802734,
-										"startLat": 40.77412033081055,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:51:22.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:14:43.000Z",
-										"paymentType": "1",
-										"tripDistance": 9.4,
-										"vendorID": "1",
-										"endLon": -73.97825622558594,
-										"totalAmount": 40.34,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.76459503173828,
-										"fareAmount": 29.5,
-										"tipAmount": 4,
-										"tollsAmount": 5.54
-									},
-									{
-										"startLon": -73.97798919677734,
-										"startLat": 40.752445220947266,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:50:56.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:00:09.000Z",
-										"paymentType": "1",
-										"tripDistance": 3.3,
-										"vendorID": "1",
-										"endLon": -73.98096466064453,
-										"totalAmount": 15.95,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.71363067626953,
-										"fareAmount": 12,
-										"tipAmount": 2.65,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -73.97588348388672,
-										"startLat": 40.759944915771484,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:51:29.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:06:02.000Z",
-										"paymentType": "1",
-										"tripDistance": 3.4,
-										"vendorID": "1",
-										"endLon": -74.0064926147461,
-										"totalAmount": 15.3,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.72174072265625,
-										"fareAmount": 13,
-										"tipAmount": 1,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -73.98847198486328,
-										"startLat": 40.76396942138672,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:50:38.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:06:28.000Z",
-										"paymentType": "2",
-										"tripDistance": 2.7,
-										"vendorID": "1",
-										"endLon": -73.98572540283203,
-										"totalAmount": 13.3,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.73545837402344,
-										"fareAmount": 12,
-										"tipAmount": 0,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -73.97062683105469,
-										"startLat": 40.75197219848633,
-										"rateCodeId": 1,
-										"passengerCount": 2,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:51:30.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:11:42.000Z",
-										"paymentType": "1",
-										"tripDistance": 3.3,
-										"vendorID": "1",
-										"endLon": -74.00544738769531,
-										"totalAmount": 20.35,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.71812438964844,
-										"fareAmount": 15,
-										"tipAmount": 4.05,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -74.00629425048828,
-										"startLat": 40.7436637878418,
-										"rateCodeId": 1,
-										"passengerCount": 2,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:51:31.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:04:29.000Z",
-										"paymentType": "1",
-										"tripDistance": 1.6,
-										"vendorID": "1",
-										"endLon": -73.989013671875,
-										"totalAmount": 12.95,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.731529235839844,
-										"fareAmount": 9.5,
-										"tipAmount": 2.15,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -74.00202178955078,
-										"startLat": 40.750953674316406,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:55:04.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:09:32.000Z",
-										"paymentType": "2",
-										"tripDistance": 4.1,
-										"vendorID": "1",
-										"endLon": -73.95613861083984,
-										"totalAmount": 15.8,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.778079986572266,
-										"fareAmount": 14.5,
-										"tipAmount": 0,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -73.98535919189453,
-										"startLat": 40.74156188964844,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:52:07.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:12:25.000Z",
-										"paymentType": "1",
-										"tripDistance": 4.1,
-										"vendorID": "1",
-										"endLon": -73.94884490966797,
-										"totalAmount": 21.35,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.79008865356445,
-										"fareAmount": 16.5,
-										"tipAmount": 3.55,
-										"tollsAmount": 0
-									},
-									{
-										"startLon": -74.00537109375,
-										"startLat": 40.74081039428711,
-										"rateCodeId": 1,
-										"passengerCount": 1,
-										"puMonth": 5,
-										"tpepPickupDateTime": "2015-04-30T23:55:16.000Z",
-										"mtaTax": 0.5,
-										"improvementSurcharge": "0.3",
-										"tpepDropoffDateTime": "2015-05-01T00:14:53.000Z",
-										"paymentType": "1",
-										"tripDistance": 4.5,
-										"vendorID": "1",
-										"endLon": -73.9528579711914,
-										"totalAmount": 22.55,
-										"storeAndFwdFlag": "N",
-										"puYear": 2015,
-										"extra": 0.5,
-										"endLat": 40.77226638793945,
-										"fareAmount": 17.5,
-										"tipAmount": 3.75,
-										"tollsAmount": 0
-									}
-								],
-								"schema": {
-									"vendorID": "string",
-									"tpepPickupDateTime": "int",
-									"tpepDropoffDateTime": "int",
-									"passengerCount": "int",
-									"tripDistance": "double",
-									"puLocationId": "string",
-									"doLocationId": "string",
-									"startLon": "double",
-									"startLat": "double",
-									"endLon": "double",
-									"endLat": "double",
-									"rateCodeId": "int",
-									"storeAndFwdFlag": "string",
-									"paymentType": "string",
-									"fareAmount": "double",
-									"extra": "double",
-									"mtaTax": "double",
-									"improvementSurcharge": "string",
-									"tipAmount": "double",
-									"tollsAmount": "double",
-									"totalAmount": "double",
-									"puYear": "int",
-									"puMonth": "int"
-								}
-							},
-							"isSummary": false,
-							"language": "scala"
-						},
-						"persist_state": {
-							"view": {
-								"type": "details",
-								"chartOptions": {
-									"chartType": "bar",
-									"aggregationType": "sum",
-									"categoryFieldKeys": [
-										"vendorID"
-									],
-									"seriesFieldKeys": [
-										"tpepPickupDateTime"
-									],
-									"isStacked": false
-								}
-							}
-						}
-					}
-				}
+				"version": "0.1"
 			},
 			"kernelspec": {
 				"name": "synapse_pyspark",
@@ -340,7 +56,7 @@
 						"language": "python"
 					},
 					"jupyter": {
-						"source_hidden": true,
+						"source_hidden": false,
 						"outputs_hidden": true
 					},
 					"collapsed": false
@@ -354,14 +70,14 @@
 					"# Display 10 rows\r\n",
 					"display(df.limit(10))"
 				],
-				"execution_count": 1
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
 				"metadata": {
 					"jupyter": {
 						"source_hidden": false,
-						"outputs_hidden": false
+						"outputs_hidden": true
 					},
 					"nteract": {
 						"transient": {
@@ -374,7 +90,7 @@
 					"spark.sql(\"CREATE DATABASE IF NOT EXISTS nyctaxi\")\r\n",
 					"df.write.mode(\"overwrite\").saveAsTable(\"nyctaxi.trip\")"
 				],
-				"execution_count": 2
+				"execution_count": null
 			}
 		]
 	}
