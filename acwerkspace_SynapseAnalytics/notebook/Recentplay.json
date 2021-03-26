@@ -1,0 +1,135 @@
+{
+	"name": "Recentplay",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "Spark1",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/bec5c75d-1101-4128-ba7e-ea39271d5801/resourceGroups/cloud-shell-storage-southeastasia/providers/Microsoft.Synapse/workspaces/acwerkspace/bigDataPools/Spark1",
+				"name": "Spark1",
+				"type": "Spark",
+				"endpoint": "https://acwerkspace.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/Spark1",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true,
+					"tags": [
+						"parameters"
+					]
+				},
+				"source": [
+					"TOKEN = \"BQBDHLYE6fd_Qe8RiZ7LXuC-hQ8DabozzdvONHNyXWY7bioekHzH9V4W_7qDVjjgncoY5u4spo5BmMMwMuqLfsvfcLplCQ1XWJ-cUfYQmCMUaRffDBpJqJSptOLx4VzSf__8-KfYPl_BRv7HSd92aCntfVXNfNkBLIhPEYqI5mkkCFuzeojzDQ\"\r\n",
+					"USER = \"ac\"\r\n",
+					"SONGS_LIMIT = 50"
+				],
+				"execution_count": 24
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"tags": []
+				},
+				"source": [
+					"import datetime\r\n",
+					"import json\r\n",
+					"import requests\r\n",
+					"import pandas as pd\r\n",
+					"\r\n",
+					"from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient\r\n",
+					"import os\r\n",
+					"\r\n",
+					"#--------SET TIMESTAMPS--------#\r\n",
+					"datetime_now = datetime.datetime.now().strftime(\"%d%b%Y,%H%M\") # current datetime\r\n",
+					"#after = datetime.datetime.now() - datetime.timedelta(days=10) # set \"after\" timestamp i.e. for songs played after this timestamp\r\n",
+					"\r\n",
+					"\r\n",
+					"#--------REQEUST RECENTLY PLAYED FROM SPOTIFY--------#\r\n",
+					"headers = {\r\n",
+					"    \"Accept\" : \"application/json\",\r\n",
+					"    \"Content-Type\" : \"application/json\",\r\n",
+					"    \"Authorization\" : \"Bearer {token}\".format(token = TOKEN)\r\n",
+					"    }\r\n",
+					"\r\n",
+					"after_unix = int(after.timestamp()) * 1000 #convert unix in seconds to milliseconds for spotify\r\n",
+					"\r\n",
+					"r = requests.get(\"https://api.spotify.com/v1/me/player/recently-played?&limit={limit}\".format(limit=SONGS_LIMIT), headers=headers)\r\n",
+					"data = r.json()\r\n",
+					"\r\n",
+					"#--------CREATE SONG_DICT, SONG_DF--------#\r\n",
+					"song_names = []\r\n",
+					"artist_names = []\r\n",
+					"played_at = []\r\n",
+					"\r\n",
+					"for song in data[\"items\"]:\r\n",
+					"    song_names.append(song[\"track\"][\"name\"])\r\n",
+					"    artist_names.append(song[\"track\"][\"album\"][\"artists\"][0][\"name\"])\r\n",
+					"    played_at.append(song[\"played_at\"])\r\n",
+					"\r\n",
+					"song_dict = {\r\n",
+					"    \"song_name\": song_names,\r\n",
+					"    \"artist_name\": artist_names,\r\n",
+					"    \"played_at\": played_at\r\n",
+					"}\r\n",
+					"\r\n",
+					"song_df = pd.DataFrame(song_dict, columns = [\"song_name\", \"artist_name\", \"played_at\"])\r\n",
+					"\r\n",
+					"#--------CREATE SPARK DATABASE--------#\r\n",
+					"spark.conf.set(\"spark.sql.execution.arrow.enabled\", \"true\")\r\n",
+					"spark.sql(\"CREATE DATABASE IF NOT EXISTS recentplay\")\r\n",
+					"df = spark.createDataFrame(song_df)\r\n",
+					"df.write.mode(\"overwrite\").saveAsTable(\"recentplay.{user}\".format(user=USER))"
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
