@@ -2,7 +2,7 @@
 	"name": "Import_RecentPlay",
 	"properties": {
 		"content": {
-			"query": "SELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK     'https://cs11003200124a6d63a.blob.core.windows.net/recentplay/recentplay_24Mar2021,1306.csv',\n        FORMAT = 'csv'\n    ) with (\n        song_name varchar(100) 1,\n        artist_name varchar(100) 2\n    ) AS [result];",
+			"query": "SELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK     'https://cs11003200124a6d63a.blob.core.windows.net/recentplay/recentplay_24Mar2021,1306.csv',\n        FORMAT = 'csv'\n    ) with (\n        song_name varchar(100) 1,\n        artist_name varchar(100) 2,\n        played_at varchar(50) 3\n    ) AS [result];",
 			"metadata": {
 				"language": "sql"
 			},
