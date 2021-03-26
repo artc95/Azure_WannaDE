@@ -61,24 +61,35 @@
 							"deleting": false
 						}
 					},
+					"microsoft": {
+						"language": "python"
+					},
 					"collapsed": true,
 					"tags": [
 						"parameters"
 					]
 				},
 				"source": [
+					"%%pyspark\r\n",
 					"TOKEN = \"BQBDHLYE6fd_Qe8RiZ7LXuC-hQ8DabozzdvONHNyXWY7bioekHzH9V4W_7qDVjjgncoY5u4spo5BmMMwMuqLfsvfcLplCQ1XWJ-cUfYQmCMUaRffDBpJqJSptOLx4VzSf__8-KfYPl_BRv7HSd92aCntfVXNfNkBLIhPEYqI5mkkCFuzeojzDQ\"\r\n",
 					"USER = \"ac\"\r\n",
 					"SONGS_LIMIT = 50"
 				],
-				"execution_count": 24
+				"execution_count": 17
 			},
 			{
 				"cell_type": "code",
 				"metadata": {
+					"jupyter": {
+						"source_hidden": true
+					},
+					"microsoft": {
+						"language": "python"
+					},
 					"tags": []
 				},
 				"source": [
+					"%%pyspark\r\n",
 					"import datetime\r\n",
 					"import json\r\n",
 					"import requests\r\n",
@@ -127,6 +138,35 @@
 					"spark.sql(\"CREATE DATABASE IF NOT EXISTS recentplay\")\r\n",
 					"df = spark.createDataFrame(song_df)\r\n",
 					"df.write.mode(\"overwrite\").saveAsTable(\"recentplay.{user}\".format(user=USER))"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": true
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.sql(\"\"\"\r\n",
+					"    SELECT artist_name,\r\n",
+					"        COUNT(artist_name) as CountArtistName\r\n",
+					"    FROM recentplay.ac\r\n",
+					"    GROUP BY artist_name\r\n",
+					"\"\"\")\r\n",
+					"df.write.saveAsTable(\"recentplay.{user}CountArtist\".format(user=USER))"
 				],
 				"execution_count": null
 			}
