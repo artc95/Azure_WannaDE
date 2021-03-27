@@ -81,7 +81,7 @@
 				"cell_type": "code",
 				"metadata": {
 					"jupyter": {
-						"source_hidden": true
+						"source_hidden": false
 					},
 					"microsoft": {
 						"language": "python"
