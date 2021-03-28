@@ -24,4 +24,4 @@ https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-create-work
 (QasaRent.py)
 
 - Adapted from "Curious about housing prices in Stockholm? What does the data say?" at https://medium.com/swlh/how-i-completed-a-full-data-analysis-project-on-house-sale-in-stockholm-d34955bcd447
-- 
+- ChromeDriver Documentation and Downloads https://sites.google.com/a/chromium.org/chromedriver/home
