@@ -25,3 +25,4 @@ https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-create-work
 
 - Adapted from "Curious about housing prices in Stockholm? What does the data say?" at https://medium.com/swlh/how-i-completed-a-full-data-analysis-project-on-house-sale-in-stockholm-d34955bcd447
 - ChromeDriver Documentation and Downloads https://sites.google.com/a/chromium.org/chromedriver/home
+- Dynamic Website Scraping (Selenium Web Driver, Beautiful Soup) https://towardsdatascience.com/how-to-scrape-any-website-with-python-and-beautiful-soup-part-2-of-2-77560fcd30fc
