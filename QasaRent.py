@@ -2,10 +2,17 @@
 ### in cmd, run "pip install beautifulsoup4" to install beautifulsoup4 (details https://www.tutorialspoint.com/beautiful_soup/beautiful_soup_installation.htm)
 ### change Chrome Webdriver path in "Extract" sections if different path
 
+### in cmd, run "pip install azure-storage-blob" to install Azure Blob Storage client library for Python package
+### in cmd, run "setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>" to set environment variable
+### (details https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python)
+
 from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
 import pandas as pd
+
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+import os
 
 #--------EXTRACT FROM QASA, CREATE QASA.CSV--------#
 browser = webdriver.Chrome("/Users/artc/Desktop/chromedriver.exe") # change chromedriver.exe path if different
@@ -152,3 +159,19 @@ blocket_df = pd.DataFrame(blocket_dict, columns = ["name", "url", "rooms", "area
 # blocket.csv might already exist, so check if ok to overwrite
 overwrite_csv = input("If blocket.csv already exists, it will be overwritten. Press Enter to proceed, Ctrl + C to terminate.")
 csv_file = blocket_df.to_csv("blocket.csv")
+
+#--------STORE RECENTPLAY.CSV AS AZURE BLOB--------#
+
+try:
+    connect_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+
+    blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+    to_upload = ["qasa.csv", "blocket.csv"] # list of .csvs to upload
+    for csv in to_upload:
+        blob_client = blob_service_client.get_blob_client(container = "solna-rent", blob = csv)
+        with open("./" + csv, "rb") as data:
+            blob_client.upload_blob(data, overwrite = True)
+
+except Exception as ex:
+    print("Exception: " + str(ex))
