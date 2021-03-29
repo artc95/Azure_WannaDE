@@ -1,23 +1,37 @@
 ### DO BEFORE RUNNING CODE!!!
 ### in cmd, run "pip install beautifulsoup4" to install beautifulsoup4 (details https://www.tutorialspoint.com/beautiful_soup/beautiful_soup_installation.htm)
+### change Chrome Webdriver path in "Extract" sections if different path
 
 from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
+import pandas as pd
 
-browser = webdriver.Chrome("/Users/artc/Desktop/chromedriver.exe")
+#--------EXTRACT FROM QASA, CREATE QASA.CSV--------#
+browser = webdriver.Chrome("/Users/artc/Desktop/chromedriver.exe") # change chromedriver.exe path if different
 browser.get("https://en.qasa.se/p2/en/find-home/sweden?searchAreas[]=Solna%20kommun%3B%3B398040")
-time.sleep(15)
+time.sleep(10) # time to load
 
-"""initial_content = browser.page_source # not all listings shown yet
-initial_soup = BeautifulSoup(content, "html.parser")"""
+try: # ACCEPT COOKIES to access other buttons
+    browser.find_element_by_xpath("//button[@class='sc-hKgILt hPMLcZ general-cookie-consent__AcceptButton-mls226-1 ejXQzy']").click()
+except:
+    print("Agreed to cookies.")
 
+can_load_more = True # click on "LOAD MORE" BUTTON until all listings shown and cannot "Load more"
+while can_load_more:
+    try: # find and click "Load more", then give time to load
+        browser.find_element_by_xpath("//button[@class='sc-hKgILt hPMLcZ pagination__StyledButton-sc-17c2n48-2 kFYVIO']").click()
+        time.sleep(4)
+    except: # cannot find "Load more" once all listings loaded, so end this loop
+        print("All listings loaded.")
+        time.sleep(4)
+        can_load_more = False
 
 names = []
 urls = []
 rooms = []
 areas = []
-prices = []
+monthly_prices_sek = []
 
 content = browser.page_source
 browser.quit()
@@ -35,14 +49,34 @@ for n in range(len(key_info_soup)):
         urls.append("https://en.qasa.se" + url_soup["href"]) # href in <a> is partial, so complete it with "https..."
         
         # extract listing rooms, area
-        info_header_soup = key_info_soup[n].find("div", attrs = {"class":"text__Text-sc-1ttkyfd-0 IFApQ"})
-        info_header = info_header_soup.text.strip()
+        info_header = key_info_soup[n].find("div", attrs = {"class":"text__Text-sc-1ttkyfd-0 IFApQ"}).text.strip()
         key_info = info_header.split("•")
-        rooms.append(key_info[1])
-        areas.append(key_info[2])
-    
-    except:
-        print("Not a listing <div>.")
+        if key_info[1][-5:] == "rooms": # because room info might contain "room" or "rooms"
+            rooms_int = float(key_info[1].replace(" rooms", ""))
+        else:
+            rooms_int = float(key_info[1].replace(" room", ""))
+        area = int(key_info[2].replace("m²", ""))
+        rooms.append(rooms_int)
+        areas.append(area)
+
+        # extract listing prices
+        price_soup = key_info_soup[n].find("div", attrs = {"class": "text__Text-sc-1ttkyfd-0 home-item__Rent-sc-1tbgb3o-9 fijJmN hPnVyJ"}).text.strip()
+        price = int(price_soup[4:].replace(",", ""))
+        monthly_prices_sek.append(price)
+
+    except Exception as ex:
+        print("Not a listing <div>. " + str(ex))
         
-print(names)
-print(urls)
+qasa_dict = {
+    "name": names,
+    "url": urls,
+    "rooms": rooms,
+    "area": areas,
+    "monthly_price_sek": monthly_prices_sek
+}
+
+qasa_df = pd.DataFrame(qasa_dict, columns = ["name", "url", "rooms", "area", "monthly_price_sek"])
+
+# qasa.csv might already exist, so check if ok to overwrite
+overwrite_csv = input("If qasa.csv already exists, it will be overwritten. Press Enter to proceed, Ctrl + C to terminate.")
+csv_file = qasa_df.to_csv("qasa.csv")
