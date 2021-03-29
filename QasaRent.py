@@ -83,6 +83,8 @@ qasa_dict = {
 }
 
 qasa_df = pd.DataFrame(qasa_dict, columns = ["name", "url", "rooms", "area", "monthly_price_sek"])
+qasa_df.index.name = "id"
+qasa_df.index += 1
 
 # qasa.csv might already exist, so check if ok to overwrite
 overwrite_csv = input("If qasa.csv already exists, it will be overwritten. Press Enter to proceed, Ctrl + C to terminate.")
@@ -155,6 +157,8 @@ blocket_dict = {
 }
 
 blocket_df = pd.DataFrame(blocket_dict, columns = ["name", "url", "rooms", "area", "monthly_price_sek"])
+blocket_df.index.name = "id"
+blocket_df.index += 1
 
 # blocket.csv might already exist, so check if ok to overwrite
 overwrite_csv = input("If blocket.csv already exists, it will be overwritten. Press Enter to proceed, Ctrl + C to terminate.")
