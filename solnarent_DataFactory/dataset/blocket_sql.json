@@ -1,0 +1,46 @@
+{
+	"name": "blocket_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "artcql_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "url",
+				"type": "varchar"
+			},
+			{
+				"name": "rooms",
+				"type": "decimal",
+				"precision": 2,
+				"scale": 1
+			},
+			{
+				"name": "area",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "monthly_price_sek",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "blocket"
+		}
+	}
+}
